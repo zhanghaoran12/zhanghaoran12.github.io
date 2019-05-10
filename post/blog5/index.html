@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>swift函数 // 张浩然的个人博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.5" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://zhanghaoran12.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="swift函数"/>
+<meta name="twitter:description" content="函数的定义与调用 func greet(person: String) -&gt; String { let greeting = &quot;Hello, &quot; &#43; person &#43; &quot;!&quot; return greeting } print(greet(person: &quot;Anna&quot;)) // 打印 &quot;Hello, Anna!&quot; print(greet(person: &quot;Brian&quot;)) // 打印 &quot;Hello, Brian!&quot;  多参数函数 func greet(person: String, alreadyGreeted: Bool) -&gt; String { if alreadyGreeted { return greetAgain(person: person) } else { return greet(person: person) } } print(greet(person: &quot;Tim&quot;, alreadyGreeted: true)) // 打印 &quot;Hello again, Tim!&quot;  无返回值函数 func greet(person: String) { print(&quot;Hello, \(person)!"/>
+
+    <meta property="og:title" content="swift函数" />
+<meta property="og:description" content="函数的定义与调用 func greet(person: String) -&gt; String { let greeting = &quot;Hello, &quot; &#43; person &#43; &quot;!&quot; return greeting } print(greet(person: &quot;Anna&quot;)) // 打印 &quot;Hello, Anna!&quot; print(greet(person: &quot;Brian&quot;)) // 打印 &quot;Hello, Brian!&quot;  多参数函数 func greet(person: String, alreadyGreeted: Bool) -&gt; String { if alreadyGreeted { return greetAgain(person: person) } else { return greet(person: person) } } print(greet(person: &quot;Tim&quot;, alreadyGreeted: true)) // 打印 &quot;Hello again, Tim!&quot;  无返回值函数 func greet(person: String) { print(&quot;Hello, \(person)!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhanghaoran12.github.io/post/blog5/" />
+<meta property="article:published_time" content="2019-05-10T20:21:12&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-10T20:21:12&#43;08:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://zhanghaoran12.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>张浩然的个人博客</h1>
+      <p>又聪明 又厚道 又善良...</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/zhanghaoran12"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://weibo.com/3192022912/profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">swift函数</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 10, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h3 id="函数的定义与调用">函数的定义与调用</h3>
+
+<pre><code>func greet(person: String) -&gt; String {
+    let greeting = &quot;Hello, &quot; + person + &quot;!&quot;
+    return greeting
+}
+print(greet(person: &quot;Anna&quot;))
+// 打印 &quot;Hello, Anna!&quot;
+print(greet(person: &quot;Brian&quot;))
+// 打印 &quot;Hello, Brian!&quot;
+</code></pre>
+
+<h3 id="多参数函数">多参数函数</h3>
+
+<pre><code>func greet(person: String, alreadyGreeted: Bool) -&gt; String {
+    if alreadyGreeted {
+        return greetAgain(person: person)
+    } else {
+        return greet(person: person)
+    }
+}
+print(greet(person: &quot;Tim&quot;, alreadyGreeted: true))
+// 打印 &quot;Hello again, Tim!&quot;
+</code></pre>
+
+<h3 id="无返回值函数">无返回值函数</h3>
+
+<pre><code>func greet(person: String) {
+    print(&quot;Hello, \(person)!&quot;)
+}
+greet(person: &quot;Dave&quot;)
+// 打印 &quot;Hello, Dave!&quot;
+</code></pre>
+
+<blockquote>
+<p>注意
+严格上来说，虽然没有返回值被定义，greet(person:) 函数依然返回了值。没有定义返回类型的函数会返回一个特殊的Void值。它其实是一个空的元组（tuple），没有任何元素，可以写成()。</p>
+
+<h3 id="多重返回值函数">多重返回值函数</h3>
+
+<p>你可以用元组（tuple）类型让多个值作为一个复合值从函数中返回。</p>
+</blockquote>
+
+<p>下例中定义了一个名为 minMax(array:) 的函数，作用是在一个 Int 类型的数组中找出最小值与最大值。</p>
+
+<pre><code>func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..&lt;array.count] {
+        if value &lt; currentMin {
+            currentMin = value
+        } else if value &gt; currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+</code></pre>
+
+<h3 id="可选元组返回类型">可选元组返回类型</h3>
+
+<p>如果函数返回的元组类型有可能整个元组都“没有值”，你可以使用可选的（ optional ） 元组返回类型反映整个元组可以是nil的事实。你可以通过在元组类型的右括号后放置一个问号来定义一个可选元组，例如 (Int, Int)? 或  (String, Int, Bool)?
+&gt; 注意 可选元组类型如 (Int, Int)? 与元组包含可选类型如 (Int?, Int?) 是不同的.可选的元组类型，整个元组是可选的，而不只是元组中的每个元素值。</p>
+
+<p>前面的 minMax(array:) 函数返回了一个包含两个 Int 值的元组。但是函数不会对传入的数组执行任何安全检查，如果 array 参数是一个空数组，如上定义的 minMax(array:) 在试图访问 array[0] 时会触发一个运行时错误(runtime error)。</p>
+
+<p>为了安全地处理这个“空数组”问题，将 minMax(array:) 函数改写为使用可选元组返回类型，并且当数组为空时返回 nil：</p>
+
+<pre><code>func minMax(array: [Int]) -&gt; (min: Int, max: Int)? {
+    if array.isEmpty { return nil }
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..&lt;array.count] {
+        if value &lt; currentMin {
+            currentMin = value
+        } else if value &gt; currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+</code></pre>
+
+<h3 id="忽略参数标签">忽略参数标签</h3>
+
+<p>如果你不希望为某个参数添加一个标签，可以使用一个下划线(_)来代替一个明确的参数标签。</p>
+
+<pre><code>func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
+     // 在函数体内，firstParameterName 和 secondParameterName 代表参数中的第一个和第二个参数值
+}
+someFunction(1, secondParameterName: 2)
+</code></pre>
+
+<h3 id="默认参数值">默认参数值</h3>
+
+<pre><code>func someFunction(parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
+    // 如果你在调用时候不传第二个参数，parameterWithDefault 会值为 12 传入到函数体中。
+}
+someFunction(parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault = 6
+someFunction(parameterWithoutDefault: 4) // parameterWithDefault = 12
+</code></pre>
+
+<h3 id="函数类型作为参数类型">函数类型作为参数类型</h3>
+
+<pre><code>func printMathResult(_ mathFunction: (Int, Int) -&gt; Int, _ a: Int, _ b: Int) {
+    print(&quot;Result: \(mathFunction(a, b))&quot;)
+}
+printMathResult(addTwoInts, 3, 5)
+// 打印 &quot;Result: 8&quot;
+</code></pre>
+
+<p>这个例子定义了 printMathResult(<em>:</em>:_:) 函数，它有三个参数：第一个参数叫 mathFunction，类型是  (Int, Int) -&gt; Int，你可以传入任何这种类型的函数；第二个和第三个参数叫 a 和 b，它们的类型都是 Int，这两个值作为已给出的函数的输入值。</p>
+
+<p>当 printMathResult(<em>:</em>:_:) 被调用时，它被传入 addTwoInts 函数和整数 3 和 5。它用传入 3 和 5 调用  addTwoInts，并输出结果：8。</p>
+
+<p>printMathResult(<em>:</em>:<em>:) 函数的作用就是输出另一个适当类型的数学函数的调用结果。它不关心传入函数是如何实现的，只关心传入的函数是不是一个正确的类型。这使得 printMathResult(</em>:<em>:</em>:) 能以一种类型安全（type-safe）的方式将一部分功能转给调用者实现。</p>
+
+<h3 id="函数类型作为返回类型">函数类型作为返回类型</h3>
+
+<pre><code>func stepForward(_ input: Int) -&gt; Int {
+    return input + 1
+}
+func stepBackward(_ input: Int) -&gt; Int {
+    return input - 1
+}
+func chooseStepFunction(backward: Bool) -&gt; (Int) -&gt; Int {
+    return backward ? stepBackward : stepForward
+}
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(backward: currentValue &gt; 0)
+// moveNearerToZero 现在指向 stepBackward() 函数。
+print(&quot;Counting to zero:&quot;)
+// Counting to zero:
+while currentValue != 0 {
+    print(&quot;\(currentValue)... &quot;)
+    currentValue = moveNearerToZero(currentValue)
+}
+print(&quot;zero!&quot;)
+// 3...
+// 2...
+// 1...
+// zero!
+</code></pre>
+
+<h3 id="嵌套函数">嵌套函数</h3>
+
+<pre><code>func chooseStepFunction(backward: Bool) -&gt; (Int) -&gt; Int {
+    func stepForward(input: Int) -&gt; Int { return input + 1 }
+    func stepBackward(input: Int) -&gt; Int { return input - 1 }
+    return backward ? stepBackward : stepForward
+}
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(backward: currentValue &gt; 0)
+// moveNearerToZero now refers to the nested stepForward() function
+while currentValue != 0 {
+    print(&quot;\(currentValue)... &quot;)
+    currentValue = moveNearerToZero(currentValue)
+}
+print(&quot;zero!&quot;)
+// -4...
+// -3...
+// -2...
+// -1...
+// zero!
+</code></pre>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

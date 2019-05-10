@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 张浩然的个人博客</title>
+    <link>https://zhanghaoran12.github.io/post/</link>
+    <description>Recent content in Posts on 张浩然的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 10 May 2019 20:22:12 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhanghaoran12.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>swift方法（Methods）</title>
+      <link>https://zhanghaoran12.github.io/post/blog9/</link>
+      <pubDate>Fri, 10 May 2019 20:22:12 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog9/</guid>
+      <description>实例方法 (Instance Methods) 在实例方法中修改值类型 结构体和枚举是值类型。默认情况下，值类型的属性不能在它的实例方法中被修改。
+但是，如果你确实需要在某个特定的方法中修改结构体或者枚举的属性，你可以为这个方法选择可变(mutating)行为，然后就可以从其方法内部改变它的属性；并且这个方法做的任何改变都会在方法执行结束时写回到原始结构中。方法还可以给它隐含的self属性赋予一个全新的实例，这个新实例在方法结束时会替换现存实例。
+要使用可变方法，将关键字mutating 放到方法的func关键字之前就可以了：
+struct Point { var x = 0.0, y = 0.0 mutating func moveByX(deltaX: Double, y deltaY: Double) { x += deltaX y += deltaY } } var somePoint = Point(x: 1.0, y: 1.0) somePoint.moveByX(2.0, y: 3.0) print(&amp;quot;The point is now at (\(somePoint.x), \(somePoint.y))&amp;quot;) // 打印 &amp;quot;The point is now at (3.0, 4.0)&amp;quot;  类型方法 实例方法是被某个类型的实例调用的方法。你也可以定义在类型本身上调用的方法，这种方法就叫做类型方法。在方法的func关键字之前加上关键字static，来指定类型方法。类还可以用关键字class来允许子类重写父类的方法实现。
+class SomeClass { class func someTypeMethod() { // 在这里实现类型方法 } } SomeClass.</description>
+    </item>
+    
+    <item>
+      <title>swift属性 (Properties)</title>
+      <link>https://zhanghaoran12.github.io/post/blog8/</link>
+      <pubDate>Fri, 10 May 2019 20:21:59 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog8/</guid>
+      <description>存储属性 struct FixedLengthRange { var firstValue: Int let length: Int } var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3) // 该区间表示整数0，1，2 rangeOfThreeItems.firstValue = 6 // 该区间现在表示整数6，7，8  常量结构体的存储属性 let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4) // 该区间表示整数0，1，2，3 rangeOfFourItems.firstValue = 6 // 尽管 firstValue 是个变量属性，这里还是会报错  属性观察器  willSet 在新的值被设置之前调用 didSet 在新的值被设置之后立即调用  willSet 观察器会将新的属性值作为常量参数传入，在 willSet 的实现代码中可以为这个参数指定一个名称，如果不指定则参数仍然可用，这时使用默认名称 newValue 表示。
+同样，didSet 观察器会将旧的属性值作为参数传入，可以为该参数命名或者使用默认参数名 oldValue。如果在 didSet 方法中再次对该属性赋值，那么新值会覆盖旧的值。</description>
+    </item>
+    
+    <item>
+      <title>swift类和结构体</title>
+      <link>https://zhanghaoran12.github.io/post/blog7/</link>
+      <pubDate>Fri, 10 May 2019 20:21:38 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog7/</guid>
+      <description>类和结构体对比 Swift 中类和结构体有很多共同点。共同处在于： * 定义属性用于存储值 * 定义方法用于提供功能 * 定义下标操作使得可以通过下标语法来访问实例所包含的值 * 定义构造器用于生成初始化值 * 通过扩展以增加默认实现的功能 * 实现协议以提供某种标准功能
+与结构体相比，类还有如下的附加功能： * 继承允许一个类继承另一个类的特征 * 类型转换允许在运行时检查和解释一个类实例的类型 * 析构器允许一个类实例释放任何其所被分配的资源 * 引用计数允许对一个类的多次引用
+恒等运算符 因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。（对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。）
+如果能够判定两个常量或者变量是否引用同一个类实例将会很有帮助。为了达到这个目的，Swift 内建了两个恒等运算符：
+ 等价于（===） 不等价于（!==）  请注意，“等价于”（用三个等号表示，===）与“等于”（用两个等号表示，==）的不同：
+ “等价于”表示两个类类型（class type）的常量或者变量引用同一个类实例。 “等于”表示两个实例的值“相等”或“相同”，判定时要遵照设计者定义的评判标准，因此相对于“相等”来说，这是一种更加合适的叫法。 当你在定义你的自定义类和结构体的时候，你有义务来决定判定两个实例“相等”的标准。在章节等价操作符中将会详细介绍实现自定义“等于”和“不等于”运算符的流程。
+类和结构体的选择 在你的代码中，你可以使用类和结构体来定义你的自定义数据类型。
+  然而，结构体实例总是通过值传递，类实例总是通过引用传递。这意味两者适用不同的任务。当你在考虑一个工程项目的数据结构和功能的时候，你需要决定每个数据结构是定义成类还是结构体。
+按照通用的准则，当符合一条或多条以下条件时，请考虑构建结构体： * 该数据结构的主要目的是用来封装少量相关简单数据值。 * 有理由预计该数据结构的实例在被赋值或传递时，封装的数据将会被拷贝而不是被引用。 * 该数据结构中储存的值类型属性，也应该被拷贝，而不是被引用。 * 该数据结构不需要去继承另一个既有类型的属性或者行为。
+举例来说，以下情境中适合使用结构体： * 几何形状的大小，封装一个width属性和height属性，两者均为Double类型。 * 一定范围内的路径，封装一个start属性和length属性，两者均为Int类型。 * 三维坐标系内一点，封装x，y和z属性，三者均为Double类型。
+在所有其它案例中，定义一个类，生成一个它的实例，并通过引用来管理和传递。实际中，这意味着绝大部分的自定义数据构造都应该是类，而非结构体。
+字符串、数组、和字典类型的赋值与复制行为 Swift 中，许多基本类型，诸如String，Array和Dictionary类型均以结构体的形式实现。这意味着被赋值给新的常量或变量，或者被传入函数或方法中时，它们的值会被拷贝。
+Objective-C 中NSString，NSArray和NSDictionary类型均以类的形式实现，而并非结构体。它们在被赋值或者被传入函数或方法时，不会发生值拷贝，而是传递现有实例的引用。</description>
+    </item>
+    
+    <item>
+      <title>闭包（Closures）</title>
+      <link>https://zhanghaoran12.github.io/post/blog6/</link>
+      <pubDate>Fri, 10 May 2019 20:21:25 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog6/</guid>
+      <description> 闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift 中的闭包与 C 和 Objective-C 中的代码块（blocks）以及其他一些编程语言中的匿名函数比较相似。
+闭包可以捕获和存储其所在上下文中任意常量和变量的引用。被称为包裹常量和变量。 Swift 会为你管理在捕获过程中涉及到的所有内存操作。
+在函数章节中介绍的全局和嵌套函数实际上也是特殊的闭包，闭包采取如下三种形式之一： * 全局函数是一个有名字但不会捕获任何值的闭包 * 嵌套函数是一个有名字并可以捕获其封闭函数域内值的闭包 * 闭包表达式是一个利用轻量级语法所写的可以捕获其上下文中变量或常量值的匿名闭包
+Swift 的闭包表达式拥有简洁的风格，并鼓励在常见场景中进行语法优化，主要优化如下： * 利用上下文推断参数和返回值类型 * 隐式返回单表达式闭包，即单表达式闭包可以省略 return 关键字 * 参数名称缩写 * 尾随闭包语法
+闭包表达式 嵌套函数是一个在较复杂函数中方便进行命名和定义自包含代码模块的方式。当然，有时候编写小巧的没有完整定义和命名的类函数结构也是很有用处的，尤其是在你处理一些函数并需要将另外一些函数作为该函数的参数时。
+闭包表达式是一种利用简洁语法构建内联闭包的方式。闭包表达式提供了一些语法优化，使得撰写闭包变得简单明了。下面闭包表达式的例子通过使用几次迭代展示了 sorted(by:) 方法定义和语法优化的方式。每一次迭代都用更简洁的方式描述了相同的功能
+闭包表达式语法 闭包表达式语法有如下的一般形式：
+{ (parameters) -&amp;gt; returnType in statements }  尾随闭包 如果你需要将一个很长的闭包表达式作为最后一个参数传递给函数，可以使用尾随闭包来增强函数的可读性。尾随闭包是一个书写在函数括号之后的闭包表达式，函数支持将其作为最后一个参数调用。在使用尾随闭包时，你不用写出它的参数标签：
+func someFunctionThatTakesAClosure(closure: () -&amp;gt; Void) { // 函数体部分 } // 以下是不使用尾随闭包进行函数调用 someFunctionThatTakesAClosure(closure: { // 闭包主体部分 }) // 以下是使用尾随闭包进行函数调用 someFunctionThatTakesAClosure() { // 闭包主体部分 }  </description>
+    </item>
+    
+    <item>
+      <title>swift函数</title>
+      <link>https://zhanghaoran12.github.io/post/blog5/</link>
+      <pubDate>Fri, 10 May 2019 20:21:12 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog5/</guid>
+      <description>函数的定义与调用 func greet(person: String) -&amp;gt; String { let greeting = &amp;quot;Hello, &amp;quot; + person + &amp;quot;!&amp;quot; return greeting } print(greet(person: &amp;quot;Anna&amp;quot;)) // 打印 &amp;quot;Hello, Anna!&amp;quot; print(greet(person: &amp;quot;Brian&amp;quot;)) // 打印 &amp;quot;Hello, Brian!&amp;quot;  多参数函数 func greet(person: String, alreadyGreeted: Bool) -&amp;gt; String { if alreadyGreeted { return greetAgain(person: person) } else { return greet(person: person) } } print(greet(person: &amp;quot;Tim&amp;quot;, alreadyGreeted: true)) // 打印 &amp;quot;Hello again, Tim!&amp;quot;  无返回值函数 func greet(person: String) { print(&amp;quot;Hello, \(person)!</description>
+    </item>
+    
+    <item>
+      <title>swift控制流</title>
+      <link>https://zhanghaoran12.github.io/post/blog4/</link>
+      <pubDate>Fri, 10 May 2019 20:18:57 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog4/</guid>
+      <description>For-In 循环 一些用户可能在其UI中可能需要较少的刻度。他们可以每5分钟作为一个刻度。使用 stride(from:to:by:) 函数跳过不需要的标记。
+let minuteInterval = 5 for tickMark in stride(from: 0, to: minutes, by: minuteInterval) { // 每5分钟渲染一个刻度线 (0, 5, 10, 15 ... 45, 50, 55) }  可以在闭区间使用 stride(from:through:by:) 起到同样作用： let hours = 12 let hourInterval = 3 for tickMark in stride(from: 3, through: hours, by: hourInterval) { // 每3小时渲染一个刻度线 (3, 6, 9, 12) }
+元组 我们可以使用元组在同一个switch语句中测试多个值。元组中的元素可以是值，也可以是区间。另外，使用下划线（_）来匹配所有可能的值。
+下面的例子展示了如何使用一个(Int, Int)类型的元组来分类下图中的点(x, y)：
+let somePoint = (1, 1) switch somePoint { case (0, 0): print(&amp;quot;\(somePoint) is at the origin&amp;quot;) case (_, 0): print(&amp;quot;\(somePoint) is on the x-axis&amp;quot;) case (0, _): print(&amp;quot;\(somePoint) is on the y-axis&amp;quot;) case (-2.</description>
+    </item>
+    
+    <item>
+      <title>swift集合类型</title>
+      <link>https://zhanghaoran12.github.io/post/blog3/</link>
+      <pubDate>Fri, 10 May 2019 20:18:29 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog3/</guid>
+      <description>Swift 语言提供Arrays、Sets和Dictionaries三种基本的集合类型用来存储集合数据。数组（Arrays）是有序数据的集。集合（Sets）是无序无重复数据的集。字典（Dictionaries）是无序的键值对的集。
+数组(Arrays) 数组的简单语法 写 Swift 数组应该遵循像Array这样的形式，其中Element是这个数组中唯一允许存在的数据类型。我们也可以使用像[Element]这样的简单语法。尽管两种形式在功能上是一样的，但是推荐较短的那种，而且在本文中都会使用这种形式来使用数组。
+创建一个空数组 var someInts = [Int]() print(&amp;quot;someInts is of type [Int] with \(someInts.count) items.&amp;quot;) // 打印 &amp;quot;someInts is of type [Int] with 0 items.&amp;quot; someInts.append(3) // someInts 现在包含一个 Int 值 someInts = [] // someInts 现在是空数组，但是仍然是 [Int] 类型的。  创建一个带有默认值的数组 Swift 中的Array类型还提供一个可以创建特定大小并且所有数据都被默认的构造方法。我们可以把准备加入新数组的数据项数量（count）和适当类型的初始值（repeating）传入数组构造函数：
+var threeDoubles = Array(repeating: 0.0, count: 3) // threeDoubles 是一种 [Double] 数组，等价于 [0.0, 0.0, 0.0]  通过两个数组相加创建一个数组 我们可以使用加法操作符（+）来组合两种已存在的相同类型数组。新数组的数据类型会被从两个数组的数据类型中推断出来：
+var anotherThreeDoubles = Array(repeating: 2.</description>
+    </item>
+    
+    <item>
+      <title>swift运算符</title>
+      <link>https://zhanghaoran12.github.io/post/blog2/</link>
+      <pubDate>Fri, 10 May 2019 20:17:48 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog2/</guid>
+      <description>空合运算符（Nil Coalescing Operator） 空合运算符（a ?? b）将对可选类型 a 进行空判断，如果 a 包含一个值就进行解封，否则就返回一个默认值 b。表达式 a 必须是 Optional 类型。默认值 b 的类型必须要和 a 存储值的类型保持一致。
+空合运算符是对以下代码的简短表达方法：
+a != nil ? a! : b  下文例子采用空合运算符，实现了在默认颜色名和可选自定义颜色名之间抉择：
+let defaultColorName = &amp;quot;red&amp;quot; var userDefinedColorName: String? //默认值为 nil var colorNameToUse = userDefinedColorName ?? defaultColorName // userDefinedColorName 的值为空，所以 colorNameToUse 的值为 &amp;quot;red&amp;quot;  区间运算符（Range Operators） 闭区间运算符 闭区间运算符（a&amp;hellip;b）定义一个包含从 a 到 b（包括 a 和 b）的所有值的区间。a 的值不能超过 b。 ‌ 闭区间运算符在迭代一个区间的所有值时是非常有用的，如在 for-in 循环中：
+for index in 1.</description>
+    </item>
+    
+    <item>
+      <title>swift学习笔记1</title>
+      <link>https://zhanghaoran12.github.io/post/blog/</link>
+      <pubDate>Fri, 10 May 2019 20:07:59 +0800</pubDate>
+      
+      <guid>https://zhanghaoran12.github.io/post/blog/</guid>
+      <description>常量和变量 常量和变量必须在使用前声明，用 let 来声明常量，用 var 来声明变量。
+let maximumNumberOfLoginAttempts = 10 var currentLoginAttempt = 0 var x = 0.0, y = 0.0, z = 0.0  类型标注 当你声明常量或者变量的时候可以加上类型标注（type annotation），说明常量或者变量中要存储的值的类型。
+var welcomeMessage: String welcomeMessage = &amp;quot;Hello&amp;quot; var red, green, blue: Double  输出常量和变量 你可以用print(:separator:terminator:)函数来输出当前常量或变量的值: print(:separator:terminator:) 是一个用来输出一个或多个值到适当输出区的全局函数。如果你用 Xcode，print(_:separator:terminator:) 将会输出内容到“console”面板上。separator 和 terminator 参数具有默认值，因此你调用这个函数的时候可以忽略它们。默认情况下，该函数通过添加换行符来结束当前行。如果不想换行，可以传递一个空字符串给 terminator 参数&amp;ndash;例如，print(someValue, terminator:&amp;ldquo;&amp;rdquo;) 。 Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，Swift 会用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义：
+print(&amp;quot;The current value of friendlyWelcome is \(friendlyWelcome)&amp;quot;) // 输出 &amp;quot;The current value of friendlyWelcome is Bonjour!</description>
+    </item>
+    
+  </channel>
+</rss>
